@@ -39,7 +39,10 @@ app.use(express.urlencoded({ limit: '5mb', extended: true }))
 app.use('/api/countries', CountryRoutes)
 app.use('/api/scenerys', SceneryRoutes)
 app.use('/', (req, res, next) => {
-    return res.json('Countries noo not SERVE')
+    return res.json({ 
+        countries:{ endpoint: "/api/countries" },
+        scenerys: { endpoint: "/api/scenerys"}
+    })
 })
 
 app.use('*', (req, res, next) => {
